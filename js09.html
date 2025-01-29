@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>ตัวอย่างที่ 9</title>
+</head>
+<body>
+    <h3>ดึงข้อมูลจาก APT</h3>
+    <button onclick="fetchDate()">ดึงข้อมูล</button>
+    <div id="userData"></div>
+
+    <script>
+        function fetchDate(){
+            fetch("https://jsonplaceholder.typicode.come/user/2")
+            .then((response) => response.json())
+            .then((data) => {
+                document.getElementById("userData").innerHTML = `
+                ชื่อ: ${data.name}<br>
+                อีเมล: ${data.email}<br>
+                เบอร์โทร: ${data.phone}`;
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+                alert("เกิดข้อผิดพลาดในการดึงข้อมูล");
+            });
+        }
+    </script>
+    
+</body>
+</html>
